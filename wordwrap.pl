@@ -1,29 +1,3 @@
-#!/usr/bin/perl
-#
-# wordwrap.pl --- does word wrap
-#
-while (<>) {
-    if (/^#/) {		# don't word wrap comments
-	print;
-	next;
-    }
-    next if (/^$/);	# skip blank lines
-    $linelen = 0;
-    @words = split;
-    while (defined($word = shift @words)) {
-	$word =~ s#\$\(srcdir\)/\.\./version.h#\$\(top_srcdir\)/version.h#;
-	$word =~ s#\$\(srcdir\)/.\.\/\.\./version.h#\$\(top_srcdir\)/version.h#;
-	$word =~ s#\$\(srcdir\)/.\.\/et/com_err.h#\$\(top_srcdir\)/lib/et/com_err.h#;
-	if ($linelen > 0) {
-	    printf(" ");
-	}
-	$len = length($word) + 1;
-	$linelen += $len;
-	if ($linelen > 78) {
-	    printf("\\\n ");
-	    $linelen = 1+$len;
-	}
-	printf("%s", $word);
-    }
-    printf("\n");
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a61bf130afabdca828c0efee7e1860f49f28de8f946cc2f2a99f872c4aaea055
+size 681
